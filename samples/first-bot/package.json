@@ -1,0 +1,22 @@
+{
+    "name": "first-bot",
+    "version": "1.0.0",
+    "description": "Demonstrate the core capabilities of the Microsoft Bot Framework",
+    "author": "Generated using Microsoft Bot Builder Yeoman generator v4.22.1",
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./index.js",
+        "watch": "nodemon ./index.js",
+        "lint": "eslint .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "express": "^5.0.1"
+    }
+}
