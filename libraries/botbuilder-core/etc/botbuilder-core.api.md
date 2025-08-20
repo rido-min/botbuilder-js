@@ -140,15 +140,11 @@ export class ActivityHandlerBase {
     run(context: TurnContext): Promise<void>;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "assertBotComponent" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal @deprecated (undocumented)
-export function assertBotComponent(val: unknown, ..._args: unknown[]): asserts val is BotComponent;
+export function _assertBotComponent(val: unknown, ..._args: unknown[]): asserts val is BotComponent;
 
-// Warning: (ae-internal-missing-underscore) The name "assertStoreItems" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal @deprecated (undocumented)
-export function assertStoreItems(val: unknown, ..._args: unknown[]): asserts val is StoreItem;
+export function _assertStoreItems(val: unknown, ..._args: unknown[]): asserts val is StoreItem;
 
 // @public
 export class AutoSaveStateMiddleware implements Middleware {
