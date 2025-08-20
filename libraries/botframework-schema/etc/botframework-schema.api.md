@@ -264,65 +264,41 @@ export interface AppBasedLinkQuery {
 // @public
 export type ApplicationIdentityType = 'aadApplication' | 'bot' | 'tenantBot' | 'office365Connector' | 'webhook';
 
-// Warning: (ae-internal-missing-underscore) The name "assertActivity" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertActivity(val: unknown, ..._args: unknown[]): asserts val is Activity;
+export function _assertActivity(val: unknown, ..._args: unknown[]): asserts val is Activity;
 
-// Warning: (ae-internal-missing-underscore) The name "assertAttachment" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertAttachment(val: unknown, ..._args: unknown[]): asserts val is Attachment;
+export function _assertAttachment(val: unknown, ..._args: unknown[]): asserts val is Attachment;
 
-// Warning: (ae-internal-missing-underscore) The name "assertAttachmentInfo" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertAttachmentInfo(val: unknown, ..._args: unknown[]): asserts val is AttachmentInfo;
+export function _assertAttachmentInfo(val: unknown, ..._args: unknown[]): asserts val is AttachmentInfo;
 
-// Warning: (ae-internal-missing-underscore) The name "assertAttachmentView" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertAttachmentView(val: unknown, ..._args: unknown[]): asserts val is AttachmentView;
+export function _assertAttachmentView(val: unknown, ..._args: unknown[]): asserts val is AttachmentView;
 
-// Warning: (ae-internal-missing-underscore) The name "assertCardAction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertCardAction(val: unknown, ..._args: unknown[]): asserts val is CardAction;
+export function _assertCardAction(val: unknown, ..._args: unknown[]): asserts val is CardAction;
 
-// Warning: (ae-internal-missing-underscore) The name "assertChannelAccount" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertChannelAccount(val: unknown, ..._args: unknown[]): asserts val is ChannelAccount;
+export function _assertChannelAccount(val: unknown, ..._args: unknown[]): asserts val is ChannelAccount;
 
-// Warning: (ae-internal-missing-underscore) The name "assertConversationAccount" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertConversationAccount(val: unknown, ..._args: unknown[]): asserts val is ConversationAccount;
+export function _assertConversationAccount(val: unknown, ..._args: unknown[]): asserts val is ConversationAccount;
 
-// Warning: (ae-internal-missing-underscore) The name "assertConversationReference" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertConversationReference(val: unknown, ..._args: unknown[]): asserts val is ConversationReference;
+export function _assertConversationReference(val: unknown, ..._args: unknown[]): asserts val is ConversationReference;
 
-// Warning: (ae-internal-missing-underscore) The name "assertEntity" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertEntity(val: unknown, ..._args: unknown[]): asserts val is Entity;
+export function _assertEntity(val: unknown, ..._args: unknown[]): asserts val is Entity;
 
-// Warning: (ae-internal-missing-underscore) The name "assertMessageReaction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertMessageReaction(val: unknown, ..._args: unknown[]): asserts val is MessageReaction;
+export function _assertMessageReaction(val: unknown, ..._args: unknown[]): asserts val is MessageReaction;
 
-// Warning: (ae-internal-missing-underscore) The name "assertSemanticAction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertSemanticAction(val: unknown, ..._args: unknown[]): asserts val is SemanticAction;
+export function _assertSemanticAction(val: unknown, ..._args: unknown[]): asserts val is SemanticAction;
 
-// Warning: (ae-internal-missing-underscore) The name "assertSuggestedActions" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function assertSuggestedActions(val: unknown, ..._args: unknown[]): asserts val is SuggestedActions;
+export function _assertSuggestedActions(val: unknown, ..._args: unknown[]): asserts val is SuggestedActions;
 
 // @public
 export interface Attachment {
@@ -729,13 +705,13 @@ export const conversationParametersObject: z.ZodObject<{
         aadObjectId: z.ZodOptional<z.ZodString>;
         role: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }, {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }>;
@@ -745,13 +721,13 @@ export const conversationParametersObject: z.ZodObject<{
         aadObjectId: z.ZodOptional<z.ZodString>;
         role: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }, {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }>, "many">>;
@@ -772,13 +748,13 @@ export const conversationParametersObject: z.ZodObject<{
             aadObjectId: z.ZodOptional<z.ZodString>;
             role: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }>;
@@ -792,8 +768,8 @@ export const conversationParametersObject: z.ZodObject<{
             role: z.ZodOptional<z.ZodString>;
             properties: z.ZodOptional<z.ZodUnknown>;
         }, "strip", z.ZodTypeAny, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -801,8 +777,8 @@ export const conversationParametersObject: z.ZodObject<{
             tenantId?: string;
             properties?: unknown;
         }, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -816,13 +792,13 @@ export const conversationParametersObject: z.ZodObject<{
             aadObjectId: z.ZodOptional<z.ZodString>;
             role: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }>;
@@ -834,13 +810,13 @@ export const conversationParametersObject: z.ZodObject<{
             aadObjectId: z.ZodOptional<z.ZodString>;
             role: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }>, "many">>;
@@ -850,13 +826,13 @@ export const conversationParametersObject: z.ZodObject<{
             aadObjectId: z.ZodOptional<z.ZodString>;
             role: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }, {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }>, "many">>;
@@ -895,46 +871,46 @@ export const conversationParametersObject: z.ZodObject<{
             }, "strip", z.ZodTypeAny, {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }, {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         }, {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         }>>;
         attachments: z.ZodOptional<z.ZodArray<z.ZodObject<{
             contentType: z.ZodString;
@@ -971,13 +947,13 @@ export const conversationParametersObject: z.ZodObject<{
                 aadObjectId: z.ZodOptional<z.ZodString>;
                 role: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             }, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             }>>;
@@ -988,13 +964,13 @@ export const conversationParametersObject: z.ZodObject<{
                 aadObjectId: z.ZodOptional<z.ZodString>;
                 role: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             }, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             }>;
@@ -1008,8 +984,8 @@ export const conversationParametersObject: z.ZodObject<{
                 role: z.ZodOptional<z.ZodString>;
                 properties: z.ZodOptional<z.ZodUnknown>;
             }, "strip", z.ZodTypeAny, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1017,8 +993,8 @@ export const conversationParametersObject: z.ZodObject<{
                 tenantId?: string;
                 properties?: unknown;
             }, {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1029,23 +1005,23 @@ export const conversationParametersObject: z.ZodObject<{
             channelId: z.ZodString;
             serviceUrl: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1056,23 +1032,23 @@ export const conversationParametersObject: z.ZodObject<{
             channelId?: string;
             serviceUrl?: string;
         }, {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1114,16 +1090,14 @@ export const conversationParametersObject: z.ZodObject<{
         code?: string;
         type?: string;
         value?: unknown;
-        valueType?: string;
-        text?: string;
-        id?: string;
-        speak?: string;
         name?: string;
+        id?: string;
+        text?: string;
         channelData?: unknown;
         locale?: string;
         conversation?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -1139,28 +1113,28 @@ export const conversationParametersObject: z.ZodObject<{
         localTimezone?: string;
         callerId?: string;
         from?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         recipient?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         textFormat?: string;
         attachmentLayout?: string;
         membersAdded?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
         membersRemoved?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
@@ -1172,20 +1146,21 @@ export const conversationParametersObject: z.ZodObject<{
         }[];
         topicName?: string;
         historyDisclosed?: boolean;
+        speak?: string;
         inputHint?: string;
         summary?: string;
         suggestedActions?: {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         };
         attachments?: {
             name?: string;
@@ -1197,24 +1172,25 @@ export const conversationParametersObject: z.ZodObject<{
         action?: string;
         replyToId?: string;
         label?: string;
+        valueType?: string;
         relatesTo?: {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1241,16 +1217,14 @@ export const conversationParametersObject: z.ZodObject<{
         code?: string;
         type?: string;
         value?: unknown;
-        valueType?: string;
-        text?: string;
-        id?: string;
-        speak?: string;
         name?: string;
+        id?: string;
+        text?: string;
         channelData?: unknown;
         locale?: string;
         conversation?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -1266,28 +1240,28 @@ export const conversationParametersObject: z.ZodObject<{
         localTimezone?: string;
         callerId?: string;
         from?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         recipient?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         textFormat?: string;
         attachmentLayout?: string;
         membersAdded?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
         membersRemoved?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
@@ -1299,20 +1273,21 @@ export const conversationParametersObject: z.ZodObject<{
         }[];
         topicName?: string;
         historyDisclosed?: boolean;
+        speak?: string;
         inputHint?: string;
         summary?: string;
         suggestedActions?: {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         };
         attachments?: {
             name?: string;
@@ -1324,24 +1299,25 @@ export const conversationParametersObject: z.ZodObject<{
         action?: string;
         replyToId?: string;
         label?: string;
+        valueType?: string;
         relatesTo?: {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1367,19 +1343,19 @@ export const conversationParametersObject: z.ZodObject<{
     }>;
     channelData: z.ZodOptional<z.ZodUnknown>;
 }, "strip", z.ZodTypeAny, {
-    bot?: {
-        id?: string;
-        name?: string;
-        aadObjectId?: string;
-        role?: string;
-    };
     isGroup?: boolean;
     tenantId?: string;
     channelData?: unknown;
+    bot?: {
+        name?: string;
+        id?: string;
+        aadObjectId?: string;
+        role?: string;
+    };
     topicName?: string;
     members?: {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }[];
@@ -1387,16 +1363,14 @@ export const conversationParametersObject: z.ZodObject<{
         code?: string;
         type?: string;
         value?: unknown;
-        valueType?: string;
-        text?: string;
-        id?: string;
-        speak?: string;
         name?: string;
+        id?: string;
+        text?: string;
         channelData?: unknown;
         locale?: string;
         conversation?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -1412,28 +1386,28 @@ export const conversationParametersObject: z.ZodObject<{
         localTimezone?: string;
         callerId?: string;
         from?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         recipient?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         textFormat?: string;
         attachmentLayout?: string;
         membersAdded?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
         membersRemoved?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
@@ -1445,20 +1419,21 @@ export const conversationParametersObject: z.ZodObject<{
         }[];
         topicName?: string;
         historyDisclosed?: boolean;
+        speak?: string;
         inputHint?: string;
         summary?: string;
         suggestedActions?: {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         };
         attachments?: {
             name?: string;
@@ -1470,24 +1445,25 @@ export const conversationParametersObject: z.ZodObject<{
         action?: string;
         replyToId?: string;
         label?: string;
+        valueType?: string;
         relatesTo?: {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -1512,19 +1488,19 @@ export const conversationParametersObject: z.ZodObject<{
         };
     };
 }, {
-    bot?: {
-        id?: string;
-        name?: string;
-        aadObjectId?: string;
-        role?: string;
-    };
     isGroup?: boolean;
     tenantId?: string;
     channelData?: unknown;
+    bot?: {
+        name?: string;
+        id?: string;
+        aadObjectId?: string;
+        role?: string;
+    };
     topicName?: string;
     members?: {
-        id?: string;
         name?: string;
+        id?: string;
         aadObjectId?: string;
         role?: string;
     }[];
@@ -1532,16 +1508,14 @@ export const conversationParametersObject: z.ZodObject<{
         code?: string;
         type?: string;
         value?: unknown;
-        valueType?: string;
-        text?: string;
-        id?: string;
-        speak?: string;
         name?: string;
+        id?: string;
+        text?: string;
         channelData?: unknown;
         locale?: string;
         conversation?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
             isGroup?: boolean;
@@ -1557,28 +1531,28 @@ export const conversationParametersObject: z.ZodObject<{
         localTimezone?: string;
         callerId?: string;
         from?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         recipient?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         };
         textFormat?: string;
         attachmentLayout?: string;
         membersAdded?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
         membersRemoved?: {
-            id?: string;
             name?: string;
+            id?: string;
             aadObjectId?: string;
             role?: string;
         }[];
@@ -1590,20 +1564,21 @@ export const conversationParametersObject: z.ZodObject<{
         }[];
         topicName?: string;
         historyDisclosed?: boolean;
+        speak?: string;
         inputHint?: string;
         summary?: string;
         suggestedActions?: {
+            to?: string[];
             actions?: {
                 type?: string;
                 value?: unknown;
-                text?: string;
                 title?: string;
                 image?: string;
+                text?: string;
                 displayText?: string;
                 channelData?: unknown;
                 imageAltText?: string;
             }[];
-            to?: string[];
         };
         attachments?: {
             name?: string;
@@ -1615,24 +1590,25 @@ export const conversationParametersObject: z.ZodObject<{
         action?: string;
         replyToId?: string;
         label?: string;
+        valueType?: string;
         relatesTo?: {
-            bot?: {
-                id?: string;
-                name?: string;
-                aadObjectId?: string;
-                role?: string;
-            };
             ActivityId?: string;
             user?: {
-                id?: string;
                 name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
             };
             locale?: string;
-            conversation?: {
-                id?: string;
+            bot?: {
                 name?: string;
+                id?: string;
+                aadObjectId?: string;
+                role?: string;
+            };
+            conversation?: {
+                name?: string;
+                id?: string;
                 aadObjectId?: string;
                 role?: string;
                 isGroup?: boolean;
@@ -2023,65 +1999,41 @@ export interface InvokeResponse<T = any> {
     status: number;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "isActivity" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isActivity(val: unknown): val is Activity;
+export function _isActivity(val: unknown): val is Activity;
 
-// Warning: (ae-internal-missing-underscore) The name "isAttachment" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isAttachment(val: unknown): val is Attachment;
+export function _isAttachment(val: unknown): val is Attachment;
 
-// Warning: (ae-internal-missing-underscore) The name "isAttachmentInfo" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isAttachmentInfo(val: unknown): val is AttachmentInfo;
+export function _isAttachmentInfo(val: unknown): val is AttachmentInfo;
 
-// Warning: (ae-internal-missing-underscore) The name "isAttachmentView" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isAttachmentView(val: unknown): val is AttachmentView;
+export function _isAttachmentView(val: unknown): val is AttachmentView;
 
-// Warning: (ae-internal-missing-underscore) The name "isCardAction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isCardAction(val: unknown): val is CardAction;
+export function _isCardAction(val: unknown): val is CardAction;
 
-// Warning: (ae-internal-missing-underscore) The name "isChannelAccount" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isChannelAccount(val: unknown): val is ChannelAccount;
+export function _isChannelAccount(val: unknown): val is ChannelAccount;
 
-// Warning: (ae-internal-missing-underscore) The name "isConversationAccount" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isConversationAccount(val: unknown): val is ConversationAccount;
+export function _isConversationAccount(val: unknown): val is ConversationAccount;
 
-// Warning: (ae-internal-missing-underscore) The name "isConversationReference" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isConversationReference(val: unknown): val is ConversationReference;
+export function _isConversationReference(val: unknown): val is ConversationReference;
 
-// Warning: (ae-internal-missing-underscore) The name "isEntity" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isEntity(val: unknown): val is Entity;
+export function _isEntity(val: unknown): val is Entity;
 
-// Warning: (ae-internal-missing-underscore) The name "isMessageReaction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isMessageReaction(val: unknown): val is MessageReaction;
+export function _isMessageReaction(val: unknown): val is MessageReaction;
 
-// Warning: (ae-internal-missing-underscore) The name "isSemanticAction" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isSemanticAction(val: unknown): val is SemanticAction;
+export function _isSemanticAction(val: unknown): val is SemanticAction;
 
-// Warning: (ae-internal-missing-underscore) The name "isSuggestedActions" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export function isSuggestedActions(val: unknown): val is SuggestedActions;
+export function _isSuggestedActions(val: unknown): val is SuggestedActions;
 
 // @public (undocumented)
 export interface IStatusCodeError {

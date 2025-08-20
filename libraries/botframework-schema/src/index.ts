@@ -42,14 +42,14 @@ const attachmentView = z.object({
 /**
  * @internal
  */
-export function assertAttachmentView(val: unknown, ..._args: unknown[]): asserts val is AttachmentView {
+export function _assertAttachmentView(val: unknown, ..._args: unknown[]): asserts val is AttachmentView {
     attachmentView.parse(val);
 }
 
 /**
  * @internal
  */
-export function isAttachmentView(val: unknown): val is AttachmentView {
+export function _isAttachmentView(val: unknown): val is AttachmentView {
     return attachmentView.safeParse(val).success;
 }
 
@@ -80,14 +80,14 @@ const attachmentInfo = z.object({
 /**
  * @internal
  */
-export function assertAttachmentInfo(val: unknown, ..._args: unknown[]): asserts val is AttachmentInfo {
+export function _assertAttachmentInfo(val: unknown, ..._args: unknown[]): asserts val is AttachmentInfo {
     attachmentInfo.parse(val);
 }
 
 /**
  * @internal
  */
-export function isAttachmentInfo(val: unknown): val is AttachmentInfo {
+export function _isAttachmentInfo(val: unknown): val is AttachmentInfo {
     return attachmentInfo.safeParse(val).success;
 }
 
@@ -172,14 +172,14 @@ const channelAccount = z.object({
 /**
  * @internal
  */
-export function assertChannelAccount(val: unknown, ..._args: unknown[]): asserts val is ChannelAccount {
+export function _assertChannelAccount(val: unknown, ..._args: unknown[]): asserts val is ChannelAccount {
     channelAccount.parse(val);
 }
 
 /**
  * @internal
  */
-export function isChannelAccount(val: unknown): val is ChannelAccount {
+export function _isChannelAccount(val: unknown): val is ChannelAccount {
     return channelAccount.safeParse(val).success;
 }
 
@@ -238,14 +238,14 @@ const conversationAccount = z.object({
 /**
  * @internal
  */
-export function assertConversationAccount(val: unknown, ..._args: unknown[]): asserts val is ConversationAccount {
+export function _assertConversationAccount(val: unknown, ..._args: unknown[]): asserts val is ConversationAccount {
     conversationAccount.parse(val);
 }
 
 /**
  * @internal
  */
-export function isConversationAccount(val: unknown): val is ConversationAccount {
+export function _isConversationAccount(val: unknown): val is ConversationAccount {
     return conversationAccount.safeParse(val).success;
 }
 
@@ -266,14 +266,14 @@ const messageReaction = z.object({
 /**
  * @internal
  */
-export function assertMessageReaction(val: unknown, ..._args: unknown[]): asserts val is MessageReaction {
+export function _assertMessageReaction(val: unknown, ..._args: unknown[]): asserts val is MessageReaction {
     messageReaction.parse(val);
 }
 
 /**
  * @internal
  */
-export function isMessageReaction(val: unknown): val is MessageReaction {
+export function _isMessageReaction(val: unknown): val is MessageReaction {
     return messageReaction.safeParse(val).success;
 }
 
@@ -331,14 +331,14 @@ const cardAction = z.object({
 /**
  * @internal
  */
-export function assertCardAction(val: unknown, ..._args: unknown[]): asserts val is CardAction {
+export function _assertCardAction(val: unknown, ..._args: unknown[]): asserts val is CardAction {
     cardAction.parse(val);
 }
 
 /**
  * @internal
  */
-export function isCardAction(val: unknown): val is CardAction {
+export function _isCardAction(val: unknown): val is CardAction {
     return cardAction.safeParse(val).success;
 }
 
@@ -365,14 +365,14 @@ const suggestedActions = z.object({
 /**
  * @internal
  */
-export function assertSuggestedActions(val: unknown, ..._args: unknown[]): asserts val is SuggestedActions {
+export function _assertSuggestedActions(val: unknown, ..._args: unknown[]): asserts val is SuggestedActions {
     suggestedActions.parse(val);
 }
 
 /**
  * @internal
  */
-export function isSuggestedActions(val: unknown): val is SuggestedActions {
+export function _isSuggestedActions(val: unknown): val is SuggestedActions {
     return suggestedActions.safeParse(val).success;
 }
 
@@ -413,14 +413,14 @@ const attachment = z.object({
 /**
  * @internal
  */
-export function assertAttachment(val: unknown, ..._args: unknown[]): asserts val is Attachment {
+export function _assertAttachment(val: unknown, ..._args: unknown[]): asserts val is Attachment {
     attachment.parse(val);
 }
 
 /**
  * @internal
  */
-export function isAttachment(val: unknown): val is Attachment {
+export function _isAttachment(val: unknown): val is Attachment {
     return attachment.safeParse(val).success;
 }
 
@@ -443,14 +443,14 @@ const entity = z.record(z.unknown()).refine((val) => typeof val.type === 'string
 /**
  * @internal
  */
-export function assertEntity(val: unknown, ..._args: unknown[]): asserts val is Entity {
+export function _assertEntity(val: unknown, ..._args: unknown[]): asserts val is Entity {
     entity.parse(val);
 }
 
 /**
  * @internal
  */
-export function isEntity(val: unknown): val is Entity {
+export function _isEntity(val: unknown): val is Entity {
     return entity.safeParse(val).success;
 }
 
@@ -505,14 +505,14 @@ const conversationReference = z.object({
 /**
  * @internal
  */
-export function assertConversationReference(val: unknown, ..._args: unknown[]): asserts val is ConversationReference {
+export function _assertConversationReference(val: unknown, ..._args: unknown[]): asserts val is ConversationReference {
     conversationReference.parse(val);
 }
 
 /**
  * @internal
  */
-export function isConversationReference(val: unknown): val is ConversationReference {
+export function _isConversationReference(val: unknown): val is ConversationReference {
     return conversationReference.safeParse(val).success;
 }
 
@@ -562,14 +562,14 @@ const semanticAction = z.object({
 /**
  * @internal
  */
-export function assertSemanticAction(val: unknown, ..._args: unknown[]): asserts val is SemanticAction {
+export function _assertSemanticAction(val: unknown, ..._args: unknown[]): asserts val is SemanticAction {
     semanticAction.parse(val);
 }
 
 /**
  * @internal
  */
-export function isSemanticAction(val: unknown): val is SemanticAction {
+export function _isSemanticAction(val: unknown): val is SemanticAction {
     return semanticAction.safeParse(val).success;
 }
 
@@ -813,14 +813,14 @@ const activity = z.object({
 /**
  * @internal
  */
-export function assertActivity(val: unknown, ..._args: unknown[]): asserts val is Activity {
+export function _assertActivity(val: unknown, ..._args: unknown[]): asserts val is Activity {
     activity.parse(val);
 }
 
 /**
  * @internal
  */
-export function isActivity(val: unknown): val is Activity {
+export function _isActivity(val: unknown): val is Activity {
     return activity.safeParse(val).success;
 }
 
