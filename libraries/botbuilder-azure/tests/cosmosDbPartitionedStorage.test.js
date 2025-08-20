@@ -190,7 +190,7 @@ describe('CosmosDbPartitionedStorage', function () {
 
             const settingsWithClientOptions = getSettings(this.test);
             settingsWithClientOptions.cosmosClientOptions = {
-                agent: new https.Agent({ rejectUnauthorized: false }),
+                agent: new https.Agent(),
                 connectionPolicy: { requestTimeout: 999 },
                 userAgentSuffix: 'test',
             };
@@ -209,7 +209,7 @@ describe('CosmosDbPartitionedStorage', function () {
 
             const settingsWithClientOptions = getSettings(this.test);
             settingsWithClientOptions.cosmosClientOptions = {
-                agent: new https.Agent({ rejectUnauthorized: false }),
+                agent: new https.Agent(),
                 connectionPolicy: { requestTimeout: 999 },
             };
 
