@@ -101,7 +101,7 @@ const storeItems = z.record(z.unknown());
  *
  * @deprecated Use `zod.record(zod.unknown())` instead.
  */
-export function assertStoreItems(val: unknown, ..._args: unknown[]): asserts val is StoreItem {
+export function _assertStoreItems(val: unknown, ..._args: unknown[]): asserts val is StoreItem {
     storeItems.parse(val);
 }
 

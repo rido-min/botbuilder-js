@@ -24,6 +24,6 @@ export abstract class BotComponent {
  *
  * @deprecated Use `BotComponent.z.parse()` instead.
  */
-export function assertBotComponent(val: unknown, ..._args: unknown[]): asserts val is BotComponent {
+export function _assertBotComponent(val: unknown, ..._args: unknown[]): asserts val is BotComponent {
     BotComponent.z.parse(val);
 }
