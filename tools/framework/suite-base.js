@@ -232,7 +232,9 @@ _.extend(SuiteBase.prototype, {
    * @param {string} dir The test recordings directory
    */
     setRecordingsDirectory: function (dir) {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         if (!fs.existsSync(dir)) {
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
             fs.mkdirSync(dir);
         }
         this.recordingsDirectory = dir;

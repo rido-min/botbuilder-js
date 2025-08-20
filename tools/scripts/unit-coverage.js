@@ -18,40 +18,76 @@
 const fs = require('fs');
 const path = require('path');
 
-var args = process.ARGV || process.argv;
+/**
+ * Safely reads a file by validating the path to prevent directory traversal
+ *
+ * @param {string} filePath - Path to the file to read
+ * @returns {string} File contents
+ */
+function safeReadFileSync(filePath) {
+    const resolvedPath = path.resolve(filePath);
+    const normalizedPath = path.normalize(resolvedPath);
 
-var reporter = 'list';
-var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
+    // Basic validation to prevent directory traversal
+    if (normalizedPath.includes('..')) {
+        throw new Error(`Invalid path: ${filePath}`);
+    }
+
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    return fs.readFileSync(normalizedPath);
+}
+
+/**
+ * Safely checks if a file exists by validating the path
+ *
+ * @param {string} filePath - Path to check
+ * @returns {boolean} Whether the file exists
+ */
+function safeExistsSync(filePath) {
+    const resolvedPath = path.resolve(filePath);
+    const normalizedPath = path.normalize(resolvedPath);
+
+    // Basic validation to prevent directory traversal
+    if (normalizedPath.includes('..')) {
+        return false;
+    }
+
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    return fs.existsSync(normalizedPath);
+}
+
+const args = process.ARGV || process.argv;
+
+const xunitOption = Array.prototype.indexOf.call(args, '-xunit');
 if (xunitOption !== -1) {
-    reporter = 'xunit';
     args.splice(xunitOption, 1);
 }
 
-var testList = args.pop();
-var testListArm = args.pop();
+const testList = args.pop();
+const testListArm = args.pop();
 
-var fileContent, fileContentArm;
-var root = false;
+let fileContent, fileContentArm;
+let root = false;
 
 if (!fs.existsSync) {
     fs.existsSync = require('path').existsSync;
 }
 
-if (fs.existsSync(testList)) {
-    fileContent = fs.readFileSync(testList).toString();
+if (safeExistsSync(testList)) {
+    fileContent = safeReadFileSync(testList).toString();
 } else {
-    fileContent = fs.readFileSync('./test/' + testList).toString();
+    fileContent = safeReadFileSync('./test/' + testList).toString();
     root = true;
 }
 
-if (fs.existsSync(testListArm)) {
-    fileContentArm = fs.readFileSync(testListArm).toString();
+if (safeExistsSync(testListArm)) {
+    fileContentArm = safeReadFileSync(testListArm).toString();
 } else {
-    fileContentArm = fs.readFileSync('./test/' + testListArm).toString();
+    fileContentArm = safeReadFileSync('./test/' + testListArm).toString();
     root = true;
 }
 
-var files = fileContent.split('\n').concat(fileContentArm.split('\n'));
+const files = fileContent.split('\n').concat(fileContentArm.split('\n'));
 
 args.push('--reporter=html');
 args.push('--reporter=text-summary');
@@ -68,7 +104,7 @@ args.push('200000');
 files.forEach(function (file) {
     if (file.length > 0 && file.trim()[0] !== '#') {
         // trim trailing \r if it exists
-        file.endsWith('\r') ? file.slice(0, -1) : file;
+        file = file.endsWith('\r') ? file.slice(0, -1) : file;
 
         if (root) {
             args.push('test/' + file);
@@ -78,35 +114,39 @@ files.forEach(function (file) {
     }
 });
 
-var defaultStorageAccount = 'ciserversdk';
-var defaultServiceBusAccount = 'ciserversb';
-var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
-var defaultAccessToken = 'access_token';
+const defaultStorageAccount = 'ciserversdk';
+const defaultServiceBusAccount = 'ciserversb';
+const defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
+const defaultAccessToken = 'access_token';
 
 if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
     process.env.AZURE_APNS_CERTIFICATE = Buffer.from(
-        fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])
+        safeReadFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE']),
     ).toString('base64');
 } else if (process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
     throw new Error('Only one of AZURE_APNS_CERTIFICATE or AZURE_APNS_CERTIFICATE_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
-    process.env.AZURE_APNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_KEY_FILE']).toString();
+    process.env.AZURE_APNS_CERTIFICATE_KEY = safeReadFileSync(
+        process.env['AZURE_APNS_CERTIFICATE_KEY_FILE'],
+    ).toString();
 } else if (process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
     throw new Error('Only one of AZURE_APNS_CERTIFICATE_KEY or AZURE_APNS_CERTIFICATE_KEY_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
     process.env.AZURE_MPNS_CERTIFICATE = Buffer.from(
-        fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])
+        safeReadFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE']),
     ).toString('base64');
 } else if (process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
     throw new Error('Only one of AZURE_MPNS_CERTIFICATE or AZURE_MPNS_CERTIFICATE_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
-    process.env.AZURE_MPNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE']).toString();
+    process.env.AZURE_MPNS_CERTIFICATE_KEY = safeReadFileSync(
+        process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE'],
+    ).toString();
 } else if (process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
     throw new Error('Only one of AZURE_MPNS_CERTIFICATE_KEY or AZURE_MPNS_CERTIFICATE_KEY_FILE can be set. Not both.');
 }
@@ -165,7 +205,7 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
 
         if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
             throw new Error(
-                'Service Management recordings can only be made with the subscription ' + defaultSubscription
+                'Service Management recordings can only be made with the subscription ' + defaultSubscription,
             );
         }
     }

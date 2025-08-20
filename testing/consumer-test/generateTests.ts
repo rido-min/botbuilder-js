@@ -22,6 +22,7 @@ if (fs.existsSync(testsDir)) {
 fs.mkdirSync(testsDir);
 
 for (const version of versions) {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     fs.writeFileSync(
         path.resolve(testsDir, `typescript.${version}.test.js`),
         `

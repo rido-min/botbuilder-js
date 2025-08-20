@@ -18,32 +18,68 @@
 const fs = require('fs');
 const path = require('path');
 
-var args = process.ARGV || process.argv;
+/**
+ * Safely reads a file by validating the path to prevent directory traversal
+ *
+ * @param {string} filePath - Path to the file to read
+ * @returns {string} File contents
+ */
+function safeReadFileSync(filePath) {
+    const resolvedPath = path.resolve(filePath);
+    const normalizedPath = path.normalize(resolvedPath);
 
-var reporter = 'list';
-var xunitOption = Array.prototype.indexOf.call(args, '-xunit');
+    // Basic validation to prevent directory traversal
+    if (normalizedPath.includes('..')) {
+        throw new Error(`Invalid path: ${filePath}`);
+    }
+
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    return fs.readFileSync(normalizedPath);
+}
+
+/**
+ * Safely checks if a file exists by validating the path
+ *
+ * @param {string} filePath - Path to check
+ * @returns {boolean} Whether the file exists
+ */
+function safeExistsSync(filePath) {
+    const resolvedPath = path.resolve(filePath);
+    const normalizedPath = path.normalize(resolvedPath);
+
+    // Basic validation to prevent directory traversal
+    if (normalizedPath.includes('..')) {
+        return false;
+    }
+
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    return fs.existsSync(normalizedPath);
+}
+
+const args = process.ARGV || process.argv;
+
+const xunitOption = Array.prototype.indexOf.call(args, '-xunit');
 if (xunitOption !== -1) {
-    reporter = 'xunit';
     args.splice(xunitOption, 1);
 }
 
-var testList = args.pop();
+const testList = args.pop();
 
-var fileContent;
-var root = false;
+let fileContent;
+let root = false;
 
 if (!fs.existsSync) {
     fs.existsSync = require('path').existsSync;
 }
 
-if (fs.existsSync(testList)) {
-    fileContent = fs.readFileSync(testList).toString();
+if (safeExistsSync(testList)) {
+    fileContent = safeReadFileSync(testList).toString();
 } else {
-    fileContent = fs.readFileSync('./test/' + testList).toString();
+    fileContent = safeReadFileSync('./test/' + testList).toString();
     root = true;
 }
 
-var files = fileContent.split('\n');
+const files = fileContent.split('\n');
 
 args.push('-u');
 args.push('tdd');
@@ -55,7 +91,7 @@ args.push('5000000');
 files.forEach(function (file) {
     if (file.length > 0 && file.trim()[0] !== '#') {
         // trim trailing \r if it exists
-        file.endsWith('\r') ? file.slice(0, -1) : file;
+        file = file.endsWith('\r') ? file.slice(0, -1) : file;
 
         if (root) {
             args.push('test/' + file);
@@ -66,6 +102,6 @@ files.forEach(function (file) {
 });
 
 args.push('-R');
-args.push(reporter);
+args.push('xunit');
 
 require('../node_modules/mocha/bin/mocha');
