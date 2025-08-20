@@ -79,8 +79,14 @@ class TraceActivity {
     }
 }
 
-/** @private */
-abstract class InterceptionMiddleware implements Middleware {
+/**
+ * InterceptionMiddleware is a base class for middleware that can intercept and trace bot activities.
+ *
+ * @remarks
+ * This abstract class provides the foundation for middleware that needs to intercept
+ * inbound and outbound activities, as well as trace bot state.
+ */
+export abstract class InterceptionMiddleware implements Middleware {
     /**
      * Implement middleware signature
      *
